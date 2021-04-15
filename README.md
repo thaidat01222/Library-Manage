@@ -8,3 +8,5 @@ CREATE DATABASE fullface_shop;
 //Open project and type in terminal 
 
 node app.js
+
+//Enjoy my website
