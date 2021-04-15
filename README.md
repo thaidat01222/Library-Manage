@@ -3,7 +3,7 @@
 
 CREATE DATABASE fullface_shop;
 
-//Then export file libraby.sql to mysql
+//Then import file libraby.sql to mysql
 
 //Open project and type in terminal 
 
