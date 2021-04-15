@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <link rel="icon" href="https://drive.google.com/file/d/1WzdaRcnldlPDhHvi6FFDcT90ZuAkIXuS/view?usp=sharing">
+    <link href='/views/partials/css/style.css' rel='stylesheet' type='text/css'>
+    <title>
+        <%= title %>
+    </title>
+</head>
+<style>
+    * {}
+
+    body {
+        width: 1300px;
+        height: 100%;
+        position: relative;
+        padding: 0;
+        margin: 0 auto;
+
+    }
+
+    .page-wrapper {
+        display: flex;
+        justify-content: space-around;
+        height: 50px;
+        background-color: rgb(80, 111, 126);
+    }
+
+    p {
+        color: white;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        font-size: 18px;
+    }
+
+    #home {
+        color: whitesmoke;
+        text-decoration: none;
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        float: left;
+        font-size: 40px;
+    }
+
+    .home-menu {
+        margin-top: 50px;
+        display: flex;
+        justify-content: space-around;
+    }
+
+
+    .search {
+        width: 100%;
+        position: relative;
+        display: grid;
+        justify-content: space-around;
+    }
+
+    #name_of_book_search {
+        width: 180px;
+        height: 30px;
+        padding-left: 10px;
+        background-color: rgb(223, 223, 223);
+        border: black;
+    }
+
+    #button-search {
+        width: 180px;
+        height: 30px;
+        padding-left: 10px;
+        background-color: rgb(223, 223, 223);
+        border: none;
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        color: navy;
+    }
+
+    #message {
+        color: crimson;
+        display: flex;
+        justify-content: space-around;
+    }
+    .thuoc-tinh{
+       background-color:slategray;
+       width: 100%; 
+    }
+</style>
+
+<body>
+    <div class="page-wrapper">
+        <a id="home" href="/home">DuyDat's Book Store</a>
+        <p>Welcome <%= username %>
+        </p>
+    </div>
+    <p>
+        <%= message %>
+    </p>
+    <div class="table-wrapper">
+        <table class="table table-hovered">
+            <thead class="thuoc-tinh">
+                <tr>
+                    <th scope="col">No</th>
+                    <th scope="col">Book's Name</th>
+                    <th scope="col">Author</th>
+                    <th scope="col">Quality</th>
+                    <th scope="col">Borrower</th>
+                    <th scope="col">Num phone</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <% if (books.length> 0) { %>
+                <tbody>
+                    <% books.forEach((book, index)=> { %>
+                        <tr>
+                            <th scope="row">
+                                <%= book.No %>
+                            </th>
+                            <td>
+                                <%= book.name_of_book %>
+                            </td>
+                            <td>
+                                <%= book.author %>
+                            </td>
+                            <td>
+                                <%= book.quality %>
+                            </td>
+                            <td>
+                                <%= book.borrower %>
+                            </td>
+                            <td>
+                                <%= book.num_phone_of_borrower %>
+                            </td>
+                            <td>
+                                <a href="/manage/edit/<%= book.No %>" rel="noopener"
+                                    class="btn btn-sm btn-success">Edit</a>
+                                <a href="/manage/delete/<%= book.No %>" class="btn btn-sm btn-danger">Delete</a>
+                            </td>
+                        </tr>
+                        <% }) %>
+                </tbody>
+        </table>
+        <% } %>
+    </div>

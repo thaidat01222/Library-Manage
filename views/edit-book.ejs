@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" href="https://drive.google.com/file/d/1WzdaRcnldlPDhHvi6FFDcT90ZuAkIXuS/view?usp=sharing">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!--<link rel="stylesheet" href="/assets/css/custom.css">-->
+    <title>
+        <%= title %>
+    </title>
+</head>
+<style>
+    .table-wrapper {
+        margin-top: 50px;
+    }
+
+    .player-img {
+        width: 40px;
+        height: 40px;
+    }
+
+    .add-player-form {
+        margin-top: 50px;
+    }
+</style>
+
+<body>
+    <div class="page-wrapper">
+        <nav class="navbar navbar-light bg-light">
+            <span class="navbar-brand mb-0 h1"><a href="/home">DuyDat's Book Store</a></span>
+            <p>Welcome <%= username %>
+            </p>
+        </nav>
+    </div>
+    <div class="container">
+        <% if (message) { %>
+            <p class="text-center text-danger">
+                <%= message %>
+            </p>
+            <% } %>
+
+                <% if (book) { %>
+                    <form class="add-player-form" action="" method="post" enctype="multipart/form-data">
+                        <div class="form-row">
+                            <div class="form-group col-md-4">
+                                <label for="No">No</label>
+                                <input type="text" class="form-control" name="No" id="No" value="<%= book.No %>"
+                                    required disabled title="Book's name can't be changed">
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="name_of_book">Book's Name</label>
+                                <input type="text" class="form-control" name="name_of_book" id="name_of_book"
+                                    value="<%= book.name_of_book %>" required>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="author">Author</label>
+                                <input type="text" class="form-control" name="author" id="author"
+                                    value="<%= book.author %>" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-4">
+                                <label for="quality">Quality</label>
+                                <input type="text" class="form-control" name="quality" id="quality"
+                                    placeholder="quality" value="<%= book.quality %>" required>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="borrower">Borrower</label>
+                                <input type="text" class="form-control" name="borrower" id="borrower"
+                                    placeholder="borrower" value="<%= book.borrower %>" required>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="num_phone_of_borrower">Num Phone</label>
+                                <input type="text" class="form-control" name="num_phone_of_borrower"
+                                    id="num_phone_of_borrower" placeholder="num_phone_of_borrower"
+                                    value="<%= book.num_phone_of_borrower %>" required>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-success float-right">Update Book</button>
+                    </form>
+                    <% } else { %>
+                        <p class="text-center">Book Not Found. Go <a href="/manage/add">here</a> to add players.</p>
+                        <% } %>
+    </div>
+    </div>
+</body>
+
+</html>
