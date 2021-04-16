@@ -9,4 +9,9 @@ CREATE DATABASE fullface_shop;
 
 node app.js
 
-//Enjoy my website
+//Access to localhost:2000
+username : thaidat01222
+password : quang123
+
+//Enjoy the website
+
